@@ -52,13 +52,11 @@ def add_dict_to_database(json_dict):
         same_offer = JobPosition.objects.get(offer_hash = json_dict['offer_hash'])
         same_offer['active'] = json_dict['active']
         same_offer.save()
-        return "Object with same hash exists. Updated status."
     except DoesNotExist:
         job_offer = json_dict_to_model(json_dict)
         job_offer.save()
-        return "Added object to database."
     except MultipleObjectsReturned:
-        return "Error: 2 offers with same hash in database. Suggesting clearing database."
+        print("Error: 2 offers with same hash in database. Suggesting clearing database.")
 
 def handle_uploaded_file(json_file):
     json_data = json_file.read()

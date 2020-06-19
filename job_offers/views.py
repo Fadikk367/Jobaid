@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 
 from .models import JobOffer
-from .utils import extract_filters_from_url, create_query, create_query_with_excluded_empty_technologies
+from .utils import extract_filters_from_url, create_query, create_query_with_excluded_empty_technologies, handle_uploaded_file
 
 def joboffers(request):
     context = {
